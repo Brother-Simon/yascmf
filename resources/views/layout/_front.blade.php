@@ -24,6 +24,7 @@
 @section('head_css')
 	<link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('static/yas_blog.css') }}" rel="stylesheet">
+	<link href="{{ asset('static/css/style.css') }}" rel="stylesheet">
 @stop
 
 @section('head_js')
