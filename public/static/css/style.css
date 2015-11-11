@@ -93,6 +93,27 @@ dl {
 ::-webkit-scrollbar-track {
   background: #dddddd;
   background: rgba(0, 0, 0, 0.05); }
+/*----------------------------------------------------------------------------------- */
+/*  border color helper classes */
+/*----------------------------------------------------------------------------------- */
+.blc-primary{
+  border-left-color:  #007aff !important;
+}
+.blc-success{
+    border-left-color:  #60c560 !important;
+  }
+.blc-info{
+    border-left-color:  #5bc0de !important;
+  }
+.blc-warning{
+    border-left-color:  #f0ad4e !important;
+  }
+.blc-danger{
+  border-left-color:  #d9534f !important;
+}
+.blc-muted {
+  border-left-color:  #bbbbbb !important;
+}
 
 /*----------------------------------------------------------------------------------- */
 /*  Background color helper classes */
@@ -101,22 +122,22 @@ dl {
   color: white; }
 
 .bg-primary {
-  background-color: #007aff; }
+  background-color: #007aff !important; }
 
 .bg-success {
-  background-color: #60c560; }
+  background-color: #60c560 !important; }
 
 .bg-info {
-  background-color: #5bc0de; }
+  background-color: #5bc0de !important; }
 
 .bg-warning {
-  background-color: #f0ad4e; }
+  background-color: #f0ad4e !important; }
 
 .bg-danger {
-  background-color: #d9534f; }
+  background-color: #d9534f !important; }
 
 .bg-muted {
-  background-color: #bbbbbb; }
+  background-color: #bbbbbb !important; }
 
 .bg-white {
   background-color: white; }
@@ -272,12 +293,14 @@ body.login2 {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   padding: 0;
   min-height: 45px;
-  height: 112px;
+  height: 74px;
   width: 100%;
   border: 0;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
-  transition: all 0.3s; }
+  transition: all 0.3s;
+  z-index: 999999;
+   }
   .navbar .container-fluid.top-bar {
     height: 46px;
     border-bottom: 1px solid #e6e6e6;
@@ -429,9 +452,9 @@ body.login2 {
             -moz-transition: all 0.3s;
             transition: all 0.3s; }
             .navbar .container-fluid.main-nav .nav-collapse .nav > li > a span {
-              font-size: 28px;
-              width: 28px;
-              height: 28px;
+              font-size: 30px;
+              width: 36px;
+              height: 31px;
               display: block;
               margin: 0 auto 2px; }
             .navbar .container-fluid.main-nav .nav-collapse .nav > li > a span.se7en-doc{
@@ -2766,7 +2789,7 @@ ul.timeline {
         ul.timeline li .timeline-content.image img, ul.timeline li .timeline-content.video img {
           width: 100%; }
         ul.timeline li .timeline-content.image p, ul.timeline li .timeline-content.video p {
-          padding: 15px 5px; }
+          /* padding: 15px 5px; */ }
     ul.timeline li:nth-child(odd) {
       padding-left: 0;
       padding-right: 50%; }
@@ -3129,3 +3152,17 @@ body.fourofour {
       left: 20px; }
     ul.timeline.animated li.active:nth-child(odd) .timeline-content {
       left: 0; } }
+
+//////////////////////////********CUSTOM**********///////////////////////
+.nav ._icon{
+
+}
+.dynasty_icon{
+  font-size: 44px;
+  line-height: 70px;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin-right: 5px;
+  border-radius: 50%;
+}

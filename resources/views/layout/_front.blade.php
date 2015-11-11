@@ -25,12 +25,16 @@
 	<link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('static/yas_blog.css') }}" rel="stylesheet">
 	<link href="{{ asset('static/css/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('static/css/font-awesome.css') }}" rel="stylesheet">
+	<link href="{{ asset('static/css/isotope.css') }}" rel="stylesheet">
 @stop
 
 @section('head_js')
 	<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
 	<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet"> 
 	<script >hljs.initHighlightingOnLoad();</script>  
+
+
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="{{ asset('static/js/html5shiv/dist/html5shiv.js') }}"></script>
@@ -51,8 +55,53 @@
 	@section('bootstrapJS')
 	<script src="{{ asset('static/js/jquery-1.10.2.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('static/js/jquery.isotope.js') }}"></script>
+	<script src="{{ asset('static/js/isotope_extra.js') }}"></script>
 	@show{{-- 添加一些bootstrap需要加载的JS --}}
 	@section('extraSection')
+	<script>
+		$(function(){
+			timelineAnimate = function(elem) {
+		      return $(".timeline.animated li").each(function(i) {
+		        var bottom_of_object, bottom_of_window;
+		        bottom_of_object = $(this).position().top + $(this).outerHeight();
+		        bottom_of_window = $(window).scrollTop() + $(window).height();
+		        if (bottom_of_window > bottom_of_object) {
+		          return $(this).addClass("active");
+		        }
+		      });
+		    };
+		    timelineAnimate();
+		    $(window).scroll(function() {
+		      return timelineAnimate();
+		    });
+		    $alpha = $('#hidden-items');
+		    $container2 = $('#social-container');
+		    $container2.isotope({
+		        itemSelector: '.item'
+		      }).isotope('insert', $alpha.find('.item'));
+		      return $("#load-more").html("加载更多").find("i").hide();
+		    // $(window).load(function() {
+		    //   /*
+		    //   # init isotope, then insert all items from hidden alpha
+		    //   */
+
+		    //   $container2.isotope({
+		    //     itemSelector: '.item'
+		    //   }).isotope('insert', $alpha.find('.item'));
+		    //   return $("#load-more").html("加载更多").find("i").hide();
+		    // });
+		    $('#load-more').click(function() {
+		      var item1, item2, item3, items, tmp;
+		      items = $container2.find('.social-entry');
+		      item1 = $(items[Math.floor(Math.random() * items.length)]).clone();
+		      item2 = $(items[Math.floor(Math.random() * items.length)]).clone();
+		      item3 = $(items[Math.floor(Math.random() * items.length)]).clone();
+		      tmp = $().add(item1).add(item2).add(item3);
+		      return $container2.isotope('insert', tmp);
+		    });
+		});
+	</script>
 	@show{{-- 用户后期扩展时需要补充的一些代码片段 --}}
 @stop
 
