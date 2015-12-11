@@ -102,7 +102,6 @@ class AdminArticleController extends BackController
     public function store(ArticleRequest $request)
     {
         $data = $request->all();  //获取请求过来的数据
-
         $content = $this->content->store($data, 'article', user('id'));  //使用仓库方法存储
         if ($content->id) {  //添加成功
             return redirect()->route('admin.article.index')->with('message', '成功发布新文章！');

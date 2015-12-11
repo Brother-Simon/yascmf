@@ -91,6 +91,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	# 分类
 	Route::resource('category','Admin\AdminCategoryController');
 
+	# 历史长河
+	Route::resource('history','Admin\AdminHistoryController');
+
 	# 标签
 	Route::resource ('tag','Admin\AdminTagController');
 
@@ -138,6 +141,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	#流程
 	Route::get('/flow', ['as' => 'admin.flow','uses' => 'Admin\AdminBusinessController@getFlow']);
 
+	#历史长河
+	Route::get('/history', ['as' => 'admin.history','uses' => 'Admin\AdminHistoryController@getIndex']);
+
 
 #--------------------
 # 业务管理 END
@@ -176,7 +182,22 @@ Route::group(array(), function () {
 	Route::get('/', ['as' => 'home', 'uses' => $Blog.'getIndex']);
 
 	# 归档页面
-	Route::get('archive', ['as' => 'archive', 'uses' => $Blog.'getArchive']);
+	Route::get('archive.html', ['as' => 'archive', 'uses' => $Blog.'getArchive']);
+
+	# 有趣
+	Route::get('interesting.html', ['as' => 'interesting', 'uses' => $Blog.'getArchive']);
+
+	# 朝代
+	Route::get('dynasty.html', ['as' => 'dynasty', 'uses' => $Blog.'getArchive']);
+
+	# 风流野史
+	Route::get('unoffical.html', ['as' => 'unoffical', 'uses' => $Blog.'getArchive']);
+
+	# 求同存异
+	Route::get('differences.html', ['as' => 'differences', 'uses' => $Blog.'getArchive']);
+
+	# 申请注册
+	Route::get('register.html', ['as' => 'register', 'uses' => $Blog.'getArchive']);
 
 	# 展示单页 如果单页无slug，则{page}取其id
 	Route::get('{page}.html', ['as' => 'page.show', 'uses' => $Blog.'getPageShow']);

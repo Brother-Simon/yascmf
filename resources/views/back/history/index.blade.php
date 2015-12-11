@@ -30,7 +30,7 @@
                 </div>
               @endif
 
-              <a href="{{ route('admin.category.create') }}" class="btn btn-primary margin-bottom">新增分类</a>
+              <a href="{{ route('admin.history.create') }}" class="btn btn-primary margin-bottom">新增分类</a>
 
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -41,29 +41,39 @@
                     <tbody>
                       <!--tr-th start-->
                       <tr>
-                        <th>名称</th>
+                        <th>创建者</th>
+                        <th>朝代开始时间</th>
+                        <th>朝代结束时间</th>
+                        <th>首页显示故事</th>
+                        <th>首页显示人物</th>
+                        <th>短简介</th>
+                        <th>长简介</th>
+                        <th>朝代开始事件</th>
+                        <th>朝代结束事件</th>
+                        <th>人物集合</th>
+                        <th>故事集合</th>
                         <th>操作</th>
-                        <th>缩略名</th>
-                        <th>文章数</th>
                       </tr>
                       <!--tr-th end-->
-                      <?php dump($categories);?>
-                      @foreach ($categories as $cat)
+                      <?php dump($dynasty);?>
+                      @foreach ($dynasty as $cat)
                       <tr>
-                        <td class="text-muted">{{ $cat->name }}</td>
+                        <td class="text-muted">{{ $cat->creater }}</td>
+                        <td class="text-muted">{{ $cat->begin_time }}</td>
+                        <td class="text-muted">{{ $cat->end_time }}</td>
+                        <td class="text-muted">{{ $cat->home_show_storys_ids }}</td>
+                        <td class="text-muted">{{ $cat->home_show_figure_ids }}</td>
+                        <td class="text-muted">{{ $cat->brief }}</td>
+                        <td class="text-muted">{{ $cat->content }}</td>
+                        <td class="text-muted">{{ $cat->begin_stroy_id }}</td>
+                        <td class="text-muted">{{ $cat->end_stroy_id }}</td>
+                        <td class="text-muted">{{ $cat->figure_ids }}</td>
+                        <td class="text-muted">{{ $cat->stroy_ids }}</td>
                         <td>
                             <a href="{{ route('admin.category.index') }}/{{ $cat->id }}/edit"><i class="fa fa-fw fa-pencil" title="修改"></i></a>  
                             <a href="javascript:void(0);"><i class="fa fa-fw fa-link" title="查看"></i></a>  
                             <a href="javascript:void(0);"><i class="fa fa-fw fa-minus-circle delete_item" title="删除" data-id="{{ $cat->id }}"></i></a>
                         </td>
-                        <td class="text-green">
-                          @if(empty($cat->slug))
-                          {{ $cat->id }}
-                          @else
-                          {{ $cat->slug }}
-                          @endif
-                        </td>
-                        <td class="text-red">{{ count( $cat->content()->get() ) }}</td>
                       </tr>
                       @endforeach
 
