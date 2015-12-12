@@ -36,7 +36,7 @@
           @endif
 
               <h2 class="page-header">新增分类</h2>
-              <form method="post" action="{{ route('admin.category.store') }}" accept-charset="utf-8">
+              <form method="post" action="{{ route('admin.history.store') }}" accept-charset="utf-8">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
               <div class="nav-tabs-custom">
@@ -50,11 +50,11 @@
                     <div class="tab-pane active" id="tab_1">
                       <div class="form-group">
                         <label>分类名称 <small class="text-red">*</small> <span class="text-green small">简短为宜</span></label>
-                        <input type="text" class="form-control" name="name" autocomplete="off" value="{{ Input::old('name') }}" placeholder="分类名称" maxlength="20">
+                        <input type="text" class="form-control" name="creater" autocomplete="off" value="{{ Input::old('name') }}" placeholder="分类名称" maxlength="20">
                       </div>
                       <div class="form-group">
                         <label>分类描述 <small class="text-red">*</small> <span class="text-green small">建议百字以内，有助于网站SEO</span></label>
-                        <textarea class="form-control" name="description" cols="45" rows="2" maxlength="200" placeholder="分类描述">{{ Input::old('description') }}</textarea>
+                        <textarea class="form-control" name="brief" cols="45" rows="2" maxlength="200" placeholder="分类描述">{{ Input::old('description') }}</textarea>
                       </div>
                     </div><!-- /.tab-pane -->
 

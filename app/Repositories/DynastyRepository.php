@@ -70,16 +70,12 @@ class DynastyRepository extends BaseRepository
      * @param  array $inputs
      * @return Douyasi\Models\Meta
      */
-    private function saveCategory($meta, $inputs)
+    private function saveDynasty($dynasty, $inputs)
     {
-        $meta->name              = e($inputs['name']);
-        $meta->description       = e($inputs['description']);
-        $meta->type              = 'category';
-        if (array_key_exists('slug', $inputs)) {
-            $meta->slug = e($inputs['slug']) ;
-        }
-        $meta->save();
-        return $meta;
+        $dynasty->creater              = e($inputs['creater']);
+        $dynasty->brief       = e($inputs['brief']);
+        $dynasty->save();
+        return $dynasty;
     }
 
     /**
@@ -127,13 +123,11 @@ class DynastyRepository extends BaseRepository
      * @param  string $type 元模型类型 分类category,标签tag
      * @return Douyasi\Models\Meta
      */
-    public function store($inputs, $type = 'category')
+    public function store($inputs,$extra=10)
     {
-        if ($type === 'category') {
-            $meta = new $this->model;
-            $meta = $this->saveCategory($meta, $inputs);
-        }
-        return $meta;
+        $dynasty = new $this->model;
+        $dynasty = $this->saveDynasty($dynasty, $inputs);
+        return $dynasty;
     }
 
     /**

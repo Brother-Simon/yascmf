@@ -2,6 +2,7 @@
 
 namespace Douyasi\Http\Controllers\Admin;
 
+use Douyasi\Http\Requests\DynastyRequest;
 use Douyasi\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Douyasi\Repositories\DynastyRepository;
@@ -51,5 +52,21 @@ class AdminHistoryController extends BackController
     public function create()
     {
         return view('back.history.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(DynastyRequest $request)
+    {
+        $data = $request->all();
+        $dynasty = $this->dynasty->store($data);
+        if ($dynasty->id) {
+            return redirect()->route('admin.hisotry')->with('message', '成功新增分类！');
+        } else {
+            return redirect()->back()->withInput($request->input())->with('fail', '数据库操作返回异常！');
+        }
     }
 }

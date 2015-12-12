@@ -67,7 +67,6 @@ class AdminCategoryController extends BackController
      */
     public function store(CategoryRequest $request)
     {
-        //
         $data = $request->all();
         $meta = $this->meta->store($data, 'category');
         if ($meta->id) {
